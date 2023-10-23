@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Translation</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color:black;
+        }
+
+        .left-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f1f1f1;
+        }
+
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px;
+        }
+
+        .s {
+            background-color: red;
+            padding: 10px 30px;
+            margin: 100px;
+            margin-top:
+        }
+
+        .sound {
+            margin: 10px;
+        }
+
+        .d {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .file-input {
+        margin-top:100px;
+            margin: 100px;
+            background-color:red;
+
+        }
+        .u{
+        margin-top:100px;
+        background-color:white;
+        }
+        button{
+        background-color:black;}
+        .t{
+        color:white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="left-section">
+        <img src="{{ url_for('static', filename='s.jpg') }}" height="500px" width="500px">
+    </div>
+
+    <div class="right-section">
+        <h1 class="u">Audio Translation</h1>
+        <div class="d">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="file-input">
+                    <butto><input type="file" name="file" accept=".wav" class="sound"></butto>
+                </div>
+                <input type="submit" value="Upload" class="s">
+            </form>
+        </div>
+
+        {% if translation %}
+        <div>
+            <h2 style="color:white">Translated Text:</h2>
+            <p class="t">{{ translation }}</p>
+            <audio controls>
+                <source src="{{ url_for('static', filename='r5.mp3') }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
